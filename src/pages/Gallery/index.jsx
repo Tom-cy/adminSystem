@@ -2,9 +2,12 @@ import React, { Component } from "react";
 import { Card, Row, Col, Modal } from "antd";
 const { Meta } = Card;
 export default class Gallery extends Component {
-  state = {
-    visible: false
-  };
+  constructor(Props) {
+    super(Props);
+    this.state = {
+      visible: false
+    };
+  }
   bigimg = imgsrc => {
     this.setState({
       imgsrc,
@@ -26,7 +29,7 @@ export default class Gallery extends Component {
           style={{ marginBottom: 10 }}
           key={index}
           hoverable
-          cover={<img src={"./gallery/" + item} />}
+          cover={<img src={"./gallery/"+item} />}
           onClick={() => this.bigimg(item)}
         >
           <Meta title="Europe Street beat" description="OOOOOO" />

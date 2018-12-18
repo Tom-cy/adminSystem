@@ -4,19 +4,36 @@ import React from "react";
 import { Menu, Icon } from "antd";
 import { NavLink } from "react-router-dom";
 import MenuConfig from "../../config/menuConfig";
+import { connect } from "react-redux";
+import { switchMenu } from "../../pages/redux/action/index";
 const SubMenu = Menu.SubMenu;
 // const MenuItemGroup = Menu.ItemGroup;
-export default class NavLeft extends React.Component {
+class NavLeft extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currenKey: []
+    };
+  }
+  getmenu = ({ item }) => {
+    const { dispatch } = this.props;
+    dispatch(switchMenu(item.props.title));
+    this.setState = {
+      currenKey: item.key
+    };
+  };
   // 菜单Will渲染
   componentWillMount() {
+    let currenKey = window.location.hash.replace(/#|\?.*$/g, '');
     const MenuTree = this.renderSubMenu(MenuConfig);
-    this.setState({ MenuTree });
+    this.setState({
+      currenKey,
+      MenuTree
+    });
   }
 
   // 定义渲染方法
   renderSubMenu = data => {
-    // console.log(data);
-
     // 获取到data数据之后进行map 数组映射
     return data.map(item => {
       if (item.children) {
@@ -41,7 +58,11 @@ export default class NavLeft extends React.Component {
           <img src="./assets/110.jpg" alt="" />
           <h1>阿嘞嘞</h1>
         </div>
-        <Menu theme="dark">
+        <Menu
+          onClick={this.getmenu}
+          selectedKeys={this.state.currenKey}
+          theme="dark"
+        >
           {/* 这是一个目录 */}
           {this.state.MenuTree}
         </Menu>
@@ -50,3 +71,4 @@ export default class NavLeft extends React.Component {
     );
   }
 }
+export default connect()(NavLeft);

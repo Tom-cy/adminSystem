@@ -3,8 +3,9 @@ import { Row, Col } from "antd";
 import "./index.less";
 import untils from "../../untils/untils";
 import axios from "../../axios";
+import { connect } from 'react-redux'
 // import Axios from "axios";
-export default class Header extends Component {
+ class Header extends Component {
   // 初始化状态数据
   constructor(props) {
     super(props);
@@ -53,7 +54,7 @@ export default class Header extends Component {
         </Row>
         <Row className="breadcrumb">
           <Col span={4} className="breadcrumb-title">
-            <span>首页</span>
+            { this.props.menuName }
           </Col>
           <Col span={20} className="weather">
             <span className="data">{this.state.time}</span>
@@ -67,3 +68,9 @@ export default class Header extends Component {
     );
   }
 }
+const mapStateToProps = state=>{
+  return {
+    menuName : state.menuName
+  }
+}
+export default connect(mapStateToProps)(Header)
