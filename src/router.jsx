@@ -9,6 +9,11 @@ import Home from "./pages/Home/index";
 import Buttons from "./pages/ui/buttons";
 import Modals from "./pages/ui/modals";
 import Detail from "./pages/Detail";
+import Gallery from "./pages/Gallery";
+
+
+
+
 // import Sock from "./pages/Socket/index";
 
 export default class router extends Component {
@@ -27,6 +32,7 @@ export default class router extends Component {
                     <Route exact path="/home" component={Home} />
                     <Route path="/ui/buttons" component={Buttons} />
                     <Route path="/ui/modals" component={Modals} />
+                    <Route path="/ui/gallery" component={Gallery} />
                   </Admin>
                 </Switch>
               )}

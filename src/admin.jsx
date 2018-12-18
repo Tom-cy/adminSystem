@@ -11,7 +11,7 @@ import "./style/index.less";
 import "./te";
 export default class Admin extends Component {
   render() {
-    console.log(this.props.children);
+    // console.log(this.props.children);
     return (
       <div>
         <Row className="container">
