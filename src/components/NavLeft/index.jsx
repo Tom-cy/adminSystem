@@ -2,6 +2,7 @@ import "./index.less";
 import React from "react";
 // eslint-disable-next-line no-unused-vars
 import { Menu, Icon } from "antd";
+import { NavLink } from "react-router-dom";
 import MenuConfig from "../../config/menuConfig";
 const SubMenu = Menu.SubMenu;
 // const MenuItemGroup = Menu.ItemGroup;
@@ -15,6 +16,7 @@ export default class NavLeft extends React.Component {
   // 定义渲染方法
   renderSubMenu = data => {
     // console.log(data);
+
     // 获取到data数据之后进行map 数组映射
     return data.map(item => {
       if (item.children) {
@@ -24,7 +26,13 @@ export default class NavLeft extends React.Component {
           </SubMenu>
         );
       }
-      return <Menu.Item key={item.key}>{item.title}</Menu.Item>;
+      return (
+        <Menu.Item key={item.key}>
+            <NavLink to={item.key}>
+                {item.title}
+            </NavLink>
+        </Menu.Item>
+      );
     });
   };
 

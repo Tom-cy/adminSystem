@@ -60,7 +60,6 @@ export default class Header extends Component {
             <span className="weather-detail">
               <img src={this.state.dayPictureUrl}  alt=""/> 
               <span className="font">{this.state.weather}</span>
-            
             </span>
           </Col>
         </Row>

@@ -16,7 +16,6 @@
 │ ├── style                 // 公共样式
 │ ├── te                    // 心心特性
 │ └── untils                // 公共组件方法
-│
 ├── admin                   // 页面入口
 ├── index.css               // 主体样式
 ├── index.js                // gogogo
