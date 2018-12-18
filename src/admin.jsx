@@ -3,10 +3,10 @@ import { Row, Col } from "antd";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import NavLeft from "./components/NavLeft";
-import Buttons from "./pages/ui/buttons";
-import Modals from "./pages/ui/modals";
-import { Switch  , Route} from "react-router-dom";
-import Home from "./pages/Home";
+// import Buttons from "./pages/ui/buttons";
+// import Modals from "./pages/ui/modals";
+// import { Switch  , Route} from "react-router-dom";
+// import Home from "./pages/Home";
 import "./style/index.less";
 import "./te";
 export default class Admin extends Component {
@@ -21,14 +21,8 @@ export default class Admin extends Component {
           <Col span={21} className="main">
             <Header />
             <Row className="content">
-              {/* <Home></Home> */}
-
-              <Switch>
-                <Route path="/ui/buttons" component={Buttons} />
-                <Route path="/ui/modals" component={Modals} />
-                {/* {this.props.children} */}
-                <Route path="*"       component={Home} />
-              </Switch>
+ 
+                {this.props.children}
             </Row>
             <Footer />
           </Col>

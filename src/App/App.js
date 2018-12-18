@@ -1,3 +1,7 @@
+// 用于搭建Socket
+
+
+
 import React, { Component } from 'react';
 import './App.less';
 class App extends Component {
