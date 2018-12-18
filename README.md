@@ -26,8 +26,8 @@
 
 1:react
 2:react-router-dom
-3:webpack
-4:promise
 5:ant-design
 6:axios
 7:less
+8: redux react-redux redux-devtools-extension --sava
+9: echarts

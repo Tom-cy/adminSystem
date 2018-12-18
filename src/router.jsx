@@ -10,8 +10,11 @@ import Buttons from "./pages/ui/buttons";
 import Modals from "./pages/ui/modals";
 import Detail from "./pages/Detail";
 import Gallery from "./pages/Gallery";
+import Bar from "./pages/echarts/Bar/index";
+import Pie from "./pages/echarts/Pie/index";
+import Line from "./pages/echarts/Line/index";
 
-
+ 
 
 
 // import Sock from "./pages/Socket/index";
@@ -33,6 +36,9 @@ export default class router extends Component {
                     <Route path="/ui/buttons" component={Buttons} />
                     <Route path="/ui/modals" component={Modals} />
                     <Route path="/ui/gallery" component={Gallery} />
+                    <Route path="/charts/bar" component={Bar} />
+                    <Route path="/charts/pie" component={Pie} />
+                    <Route path="/charts/line" component={Line} />
                   </Admin>
                 </Switch>
               )}

@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Card, Row, Col, Modal } from "antd";
 const { Meta } = Card;
 export default class Gallery extends Component {
-    state={
-        visible : false
-    }
+  state = {
+    visible: false
+  };
   bigimg = imgsrc => {
     this.setState({
       imgsrc,
@@ -43,23 +43,22 @@ export default class Gallery extends Component {
           <Col span={5}>{imgList[3]}</Col>
           <Col span={4}>{imgList[4]}</Col>
         </Row>
-        <Modal 
-        width={350}
-        // height={500}
-        visible={this.state.visible}
-        onCancel={()=>{
+        <Modal
+          width={350}
+          // height={500}
+          visible={this.state.visible}
+          onCancel={() => {
             this.setState({
-                visible : false
-            })
-        }}
-        footer={null}
+              visible: false
+            });
+          }}
+          footer={null}
         >
-       
-      
-       
-          <img 
-         style={{width:'100%'}}
-          src={"./gallery/" + this.state.imgsrc} alt="" />
+          <img
+            style={{ width: "100%" }}
+            src={"./gallery/" + this.state.imgsrc}
+            alt=""
+          />
         </Modal>
       </div>
     );
