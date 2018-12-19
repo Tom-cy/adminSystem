@@ -1,11 +1,11 @@
 // 通过调用jsonp插件
 import JsonP from 'jsonp'
 // 封装jsonp
+import axi from 'axios'
 // 先导出一个对象
 export default class Axios {
     // 定义一个静态的
     static jsonp(options) {
-
         return new Promise((resolve, reject) => {
             // 官网jsonp第一个参数URL， 第二个opts
             JsonP(options.url, {
@@ -20,4 +20,6 @@ export default class Axios {
             })
         })
     }
+    
+
 }

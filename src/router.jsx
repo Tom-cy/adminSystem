@@ -10,9 +10,11 @@ import Buttons from "./pages/ui/buttons";
 import Modals from "./pages/ui/modals";
 import Detail from "./pages/Detail";
 import Gallery from "./pages/Gallery";
+import Table from "./pages/Table";
 import Bar from "./pages/echarts/Bar/index";
 import Pie from "./pages/echarts/Pie/index";
 import Line from "./pages/echarts/Line/index";
+
 
 // import Sock from "./pages/Socket/index";
 
@@ -30,6 +32,7 @@ export default class router extends Component {
                 <Switch>
                   <Admin>
                     <Route exact path="/home" component={Home} />
+                    <Route path="/rich" component={Table} />
                     <Route path="/ui/buttons" component={Buttons} />
                     <Route path="/ui/modals" component={Modals} />
                     <Route path="/ui/gallery" component={Gallery} />
