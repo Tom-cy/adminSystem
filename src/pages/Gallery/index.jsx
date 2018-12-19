@@ -29,7 +29,7 @@ export default class Gallery extends Component {
           style={{ marginBottom: 10 }}
           key={index}
           hoverable
-          cover={<img src={"./gallery/"+item} />}
+          cover={<img src={"./gallery/"+item} alt=''/>}
           onClick={() => this.bigimg(item)}
         >
           <Meta title="Europe Street beat" description="OOOOOO" />

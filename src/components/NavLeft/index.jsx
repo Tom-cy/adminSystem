@@ -9,25 +9,29 @@ import { switchMenu } from "../../pages/redux/action/index";
 const SubMenu = Menu.SubMenu;
 // const MenuItemGroup = Menu.ItemGroup;
 class NavLeft extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currenKey: []
-    };
+    
+    state = {
+      currenKey:''
   }
-  getmenu = ({ item }) => {
+  getmenu = ({item,key}) => {
+    if (key === this.state.currentKey) {
+      return false;
+  }
+    // console.log(item.props.children.props)
     const { dispatch } = this.props;
-    dispatch(switchMenu(item.props.title));
+    // console.log(dispatch)
+    // console.log(item.props.children.props.children)
+    dispatch(switchMenu(item.props.children.props.children));
     this.setState = {
-      currenKey: item.key
+      currenKey: item.props.eventKey
     };
   };
   // 菜单Will渲染
   componentWillMount() {
-    let currenKey = window.location.hash.replace(/#|\?.*$/g, '');
+    // let currenKey = window.location.hash.replace(/#|\?.*$/g, '');
     const MenuTree = this.renderSubMenu(MenuConfig);
     this.setState({
-      currenKey,
+      // currenKey,
       MenuTree
     });
   }
@@ -50,17 +54,25 @@ class NavLeft extends React.Component {
       );
     });
   };
-
+  homeHandleClick = () => {
+    const { dispatch } = this.props;
+    dispatch(switchMenu('首页'));
+    this.setState({
+        currentKey: ""
+    });
+};
   render() {
     return (
       <div>
+         <NavLink to="/home" onClick={this.homeHandleClick}>
         <div className="logo">
           <img src="./assets/110.jpg" alt="" />
           <h1>阿嘞嘞</h1>
         </div>
+        </NavLink>
         <Menu
           onClick={this.getmenu}
-          selectedKeys={this.state.currenKey}
+          selectedKeys={[this.state.currenKey]}
           theme="dark"
         >
           {/* 这是一个目录 */}

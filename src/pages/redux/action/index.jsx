@@ -1,11 +1,12 @@
 // 它是整个按钮事件的触发行为，用来描述事件的过程，包括类型
 
-export const type ={
-    SWIT:'SWIT'
-}
-export function switchMenu(menuName){
-    return {
-        type: type.SWIT,
-        menuName
-    }
+export const type = {
+  SWITCH_MENU: "SWITCH_MENU"
+};
+// 菜单点击切换，修改面包屑名称
+export function switchMenu(menuName) {
+  return {
+    type: type.SWITCH_MENU,
+    menuName
+  };
 }

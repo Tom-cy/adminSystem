@@ -3,9 +3,10 @@ import { Row, Col } from "antd";
 import "./index.less";
 import untils from "../../untils/untils";
 import axios from "../../axios";
-import { connect } from 'react-redux'
+import { connect } from "react-redux";
+// import {  }
 // import Axios from "axios";
- class Header extends Component {
+class Header extends Component {
   // 初始化状态数据
   constructor(props) {
     super(props);
@@ -23,26 +24,32 @@ import { connect } from 'react-redux'
         time
       });
     }, 1000);
-    this.getWeatherAPIData()
+    this.getWeatherAPIData();
   }
   // 获取天气---涉及到跨域问题 ---jsonp
   // 通过jsonp插件
-  getWeatherAPIData(){
-    let city = '北京';
-    axios.jsonp({
-        url:'http://api.map.baidu.com/telematics/v3/weather?location='+encodeURIComponent(city)+'&output=json&ak=3p49MVra6urFRGOT9s8UBWr2'
-    }).then((res)=>{
-        if(res.status === 'success'){
-            let data = res.results[0].weather_data[0];
-            this.setState({
-                dayPictureUrl:data.dayPictureUrl,
-                weather:data.weather
-            })
+  getWeatherAPIData() {
+    let city = "北京";
+    axios
+      .jsonp({
+        url:
+          "http://api.map.baidu.com/telematics/v3/weather?location=" +
+          encodeURIComponent(city) +
+          "&output=json&ak=3p49MVra6urFRGOT9s8UBWr2"
+      })
+      .then(res => {
+        if (res.status === "success") {
+          let data = res.results[0].weather_data[0];
+          this.setState({
+            dayPictureUrl: data.dayPictureUrl,
+            weather: data.weather
+          });
         }
-    })
-}
+      });
+  }
 
   render() {
+    const { menuName } = this.props;
     return (
       <div className="header">
         <Row>
@@ -54,12 +61,13 @@ import { connect } from 'react-redux'
         </Row>
         <Row className="breadcrumb">
           <Col span={4} className="breadcrumb-title">
-            { this.props.menuName }
+            {/* { this.props.menuName } */}
+            {menuName || "首页"}
           </Col>
           <Col span={20} className="weather">
             <span className="data">{this.state.time}</span>
             <span className="weather-detail">
-              <img src={this.state.dayPictureUrl}  alt=""/> 
+              <img src={this.state.dayPictureUrl} alt="" />
               <span className="font">{this.state.weather}</span>
             </span>
           </Col>
@@ -68,9 +76,9 @@ import { connect } from 'react-redux'
     );
   }
 }
-const mapStateToProps = state=>{
+const mapStateToProps = state => {
   return {
-    menuName : state.menuName
-  }
-}
-export default connect(mapStateToProps)(Header)
+    menuName: state.menuName
+  };
+};
+export default connect(mapStateToProps)(Header);
