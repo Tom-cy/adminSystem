@@ -14,9 +14,6 @@ import Bar from "./pages/echarts/Bar/index";
 import Pie from "./pages/echarts/Pie/index";
 import Line from "./pages/echarts/Line/index";
 
- 
-
-
 // import Sock from "./pages/Socket/index";
 
 export default class router extends Component {
@@ -43,7 +40,7 @@ export default class router extends Component {
                 </Switch>
               )}
             />
-              {/* <Route path="/bikeMap'" component={Sock} /> */}
+            {/* <Route path="/bikeMap'" component={Sock} /> */}
             <Route path="/order/detail" component={Detail} />
           </Switch>
         </App>

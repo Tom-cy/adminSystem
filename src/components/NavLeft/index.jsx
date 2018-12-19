@@ -9,14 +9,13 @@ import { switchMenu } from "../../pages/redux/action/index";
 const SubMenu = Menu.SubMenu;
 // const MenuItemGroup = Menu.ItemGroup;
 class NavLeft extends React.Component {
-    
-    state = {
-      currenKey:''
-  }
-  getmenu = ({item,key}) => {
+  state = {
+    currenKey: ""
+  };
+  getmenu = ({ item, key }) => {
     if (key === this.state.currentKey) {
       return false;
-  }
+    }
     // console.log(item.props.children.props)
     const { dispatch } = this.props;
     // console.log(dispatch)
@@ -56,19 +55,19 @@ class NavLeft extends React.Component {
   };
   homeHandleClick = () => {
     const { dispatch } = this.props;
-    dispatch(switchMenu('首页'));
+    dispatch(switchMenu("首页"));
     this.setState({
-        currentKey: ""
+      currentKey: ""
     });
-};
+  };
   render() {
     return (
       <div>
-         <NavLink to="/home" onClick={this.homeHandleClick}>
-        <div className="logo">
-          <img src="./assets/110.jpg" alt="" />
-          <h1>阿嘞嘞</h1>
-        </div>
+        <NavLink to="/home" onClick={this.homeHandleClick}>
+          <div className="logo">
+            <img src="./assets/110.jpg" alt="" />
+            <h1>阿嘞嘞</h1>
+          </div>
         </NavLink>
         <Menu
           onClick={this.getmenu}
