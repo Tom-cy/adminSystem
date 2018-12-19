@@ -3,9 +3,9 @@ import React from "react";
 // eslint-disable-next-line no-unused-vars
 import { Menu, Icon } from "antd";
 import { NavLink } from "react-router-dom";
-import MenuConfig from "../../config/menuConfig";
 import { connect } from "react-redux";
 import { switchMenu } from "../../pages/redux/action/index";
+import axios from '../../axios/index'
 const SubMenu = Menu.SubMenu;
 // const MenuItemGroup = Menu.ItemGroup;
 class NavLeft extends React.Component {
@@ -27,13 +27,20 @@ class NavLeft extends React.Component {
   };
   // 菜单Will渲染
   componentWillMount() {
-    // let currenKey = window.location.hash.replace(/#|\?.*$/g, '');
-    const MenuTree = this.renderSubMenu(MenuConfig);
-    this.setState({
-      // currenKey,
-      MenuTree
-    });
+    axios.ajax({
+      url:'menuList'
+    }).then((res)=>{
+    
+      let MenuCon=  res.menuList
+      const MenuTree = this.renderSubMenu(MenuCon);
+      this.setState({
+        // currenKey,
+        MenuTree
+      });
+       
+    })
   }
+    // let currenKey = window.location.hash.replace(/#|\?.*$/g, '');
 
   // 定义渲染方法
   renderSubMenu = data => {
