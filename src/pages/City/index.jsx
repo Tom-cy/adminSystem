@@ -194,13 +194,35 @@ FilterForm = Form.create({})(FilterForm);
 
 class OpencityForm extends React.Component {
   render() {
+      const OpencityLayout = {
+        labelCol :{
+          span:5
+        },
+        wrapperCol :{
+          span:19
+        }
+      }
     return (
       <Form layout="horizontal">
-        <FormItem label="选择城市" >
-          <option>北京市</option>
-          <option>东京市</option>
-          <option>南京市</option>
-          <option>西京市</option>
+        <FormItem label="选择城市" {...OpencityLayout} >
+          <select style={{width:80}}>
+              <option>北京市</option>
+              <option>东京市</option>
+              <option>南京市</option>
+              <option>西京市</option>
+          </select>
+        </FormItem>
+        <FormItem label="营运模式" {...OpencityLayout} >
+          <select style={{width:80}}>
+              <option>自营</option>
+              <option>加盟</option>
+          </select>
+        </FormItem>
+        <FormItem label="销售模式" {...OpencityLayout} >
+          <select style={{width:80}}>
+              <option>实体店</option>
+              <option>虚拟店</option>
+          </select>
         </FormItem>
       </Form>
     );

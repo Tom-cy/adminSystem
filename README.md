@@ -21,13 +21,11 @@
 ├── index.js                // gogogo
 ├── node_modules            // 项目依赖包
 ├── package.json            // 项目配置信息
-
 ## 技术栈
-
 1:react
 2:react-router-dom
 5:ant-design
 6:axios
 7:less
-8: redux react-redux redux-devtools-extension --sava
+8: redux react-redux redux-devtools-extension
 9: echarts
