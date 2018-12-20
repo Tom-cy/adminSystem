@@ -1,22 +1,29 @@
 import React, { Component } from "react";
 // eslint-disable-next-line no-unused-vars
 import { HashRouter, Switch, Route } from "react-router-dom";
-import App from "./App/App";
-import Login from "./pages/Login";
 
+// 配置页面
+import App from "./App/App";
 import Admin from "./admin.jsx";
-import Home from "./pages/Home/index";
-import Buttons from "./pages/ui/buttons";
-import Modals from "./pages/ui/modals";
+
+// 一级页面
+import Login from "./pages/Login";
+import Home from "./pages/Home";
 import Detail from "./pages/Detail";
 import Gallery from "./pages/Gallery";
-import Table from "./pages/Table";
+import City from "./pages/City";
+import EmployeeInfo from "./pages/EmployeeInfo";
+import EmployeeMan from "./pages/EmployeeMan";
+
+// 二级页面
+import Buttons from "./pages/ui/buttons";
+import Modals from "./pages/ui/modals";
 import Bar from "./pages/echarts/Bar/index";
 import Pie from "./pages/echarts/Pie/index";
 import Line from "./pages/echarts/Line/index";
 
 
-// import Sock from "./pages/Socket/index";
+ 
 
 export default class router extends Component {
   render() {
@@ -25,14 +32,18 @@ export default class router extends Component {
         <App>
           <Switch>
             <Route path="/login" component={Login} />
-
             <Route
               path="/"
               render={() => (
                 <Switch>
                   <Admin>
+                    {/* 一级页面 */}
                     <Route exact path="/home" component={Home} />
-                    <Route path="/rich" component={Table} />
+                    <Route path="/employeeinfo" component={EmployeeInfo} />
+                    <Route path="/employeeman" component={EmployeeMan} />
+                    <Route path="/city" component={City} />
+                    
+                    {/* 二级页面 */}
                     <Route path="/ui/buttons" component={Buttons} />
                     <Route path="/ui/modals" component={Modals} />
                     <Route path="/ui/gallery" component={Gallery} />
@@ -43,7 +54,6 @@ export default class router extends Component {
                 </Switch>
               )}
             />
-            {/* <Route path="/bikeMap'" component={Sock} /> */}
             <Route path="/order/detail" component={Detail} />
           </Switch>
         </App>

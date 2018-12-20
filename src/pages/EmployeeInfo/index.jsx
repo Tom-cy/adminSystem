@@ -50,7 +50,6 @@ export default class tab extends Component {
           params: {
             page: 1
           }
-          // isShowLoading:false
         }
       })
       .then(res => {
@@ -76,21 +75,21 @@ export default class tab extends Component {
   render() {
     const columns = [
       {
+        title: "ID",
+        dataIndex: "id"
+      },
+      {
         title: "姓名",
         dataIndex: "name",
         render: text => (
-          <a key="1" href={"javascript:void(0)"}>
+          <a href="javascript:void(0)">
             {text}
           </a>
         )
       },
       {
-        title: "ID",
-        dataIndex: "id"
-      },
-      {
         key: "key",
-        dataIndex: "id"
+        // dataIndex: "id"
       },
 
       {
@@ -130,18 +129,18 @@ export default class tab extends Component {
         dataIndex: "address"
       }
     ];
-    const selectedRowKeys = this.state.selectedRowKeys;
-    const rowSelection = {
-      type: "radio",
-      selectedRowKeys
-    };
+    // const selectedRowKeys = this.state.selectedRowKeys;
+    // const rowSelection = {
+    //   type: "checkbox",
+    //   selectedRowKeys
+    // };
     return (
       <div>
-        <Card title="员工表">
+        <Card title="员工信息表">
           <Table
             columns={columns}
             dataSource={this.state.dataSource}
-            rowSelection={rowSelection}
+            // rowSelection={rowSelection}
             onRow={(record, index) => {
               return {
                 onClick: () => {

@@ -47,7 +47,7 @@ export default class Axios {
                         if (res.code === 0) {
                             resolve(res)
                         } else {
-                            //  model.info({
+                            //  Modal.info({
                             //      title:"提示",
                             //      content:res.msg
                             //  })

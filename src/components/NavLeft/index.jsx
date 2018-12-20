@@ -9,39 +9,35 @@ import axios from '../../axios/index'
 const SubMenu = Menu.SubMenu;
 // const MenuItemGroup = Menu.ItemGroup;
 class NavLeft extends React.Component {
-  state = {
-    currenKey: ""
-  };
-  getmenu = ({ item, key }) => {
-    if (key === this.state.currentKey) {
-      return false;
-    }
-    // console.log(item.props.children.props)
-    const { dispatch } = this.props;
-    // console.log(dispatch)
-    // console.log(item.props.children.props.children)
-    dispatch(switchMenu(item.props.children.props.children));
-    this.setState = {
-      currenKey: item.props.eventKey
-    };
-  };
+  
+  state ={
+    currenKey: ''
+  }
   // 菜单Will渲染
-  componentWillMount() {
-    axios.ajax({
-      url:'menuList'
+  componentWillMount () {
+    axios
+    .ajax({
+      url:'menuList',
+      isShowLoading : false
     }).then((res)=>{
-    
       let MenuCon=  res.menuList
       const MenuTree = this.renderSubMenu(MenuCon);
       this.setState({
         // currenKey,
         MenuTree
       });
-       
     })
   }
-    // let currenKey = window.location.hash.replace(/#|\?.*$/g, '');
-
+  getmenu = ({ item, key }) => {
+    if (key === this.state.currentKey) {
+      return false;
+    }
+    const { dispatch } = this.props;
+    dispatch(switchMenu(item.props.children.props.children));
+    this.setState = {
+      currenKey: item.props.eventKey
+    };
+  }
   // 定义渲染方法
   renderSubMenu = data => {
     // 获取到data数据之后进行map 数组映射

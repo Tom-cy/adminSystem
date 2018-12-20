@@ -18,7 +18,7 @@ class Header extends Component {
   componentWillMount() {
     // 获取时间
     setInterval(() => {
-      let time = untils.gettime(new Date());
+      let time = untils.formateDate(new Date());
 
       this.setState({
         time
