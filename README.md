@@ -3,6 +3,7 @@
 ![图片](./Proimg/react3.png)
 ![图片](./Proimg/react4.png)
 ![图片](./Proimg/react5.png)
+![图片](./Proimg/react6.png)
 
 ##项目结构
 ├── src                     // React    
