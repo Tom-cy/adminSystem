@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Button, Table, Form, Select, Modal } from "antd";
+import { Card, Button, Table, Form, Select, Modal ,Option} from "antd";
 import axios from "./../../axios";
 // import untils from "./../../untils/untils";
 
@@ -197,10 +197,12 @@ class OpencityForm extends React.Component {
     return (
       <Form layout="horizontal">
         <FormItem label="选择城市" >
-          <option>北京市</option>
-          <option>东京市</option>
-          <option>南京市</option>
-          <option>西京市</option>
+          <Select>
+            <Option>北京市</Option>
+            <Option>东京市</Option>
+            <Option>南京市</Option>
+            <Option>西京市</Option>
+          </Select>
         </FormItem>
       </Form>
     );
