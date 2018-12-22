@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Button, Table, Form, Select, Modal } from "antd";
+import { Card, Button, Table, Form, Select, Modal , message } from "antd";
 import axios from "./../../axios";
 // import untils from "./../../untils/untils";
 
@@ -22,7 +22,7 @@ export default class City extends Component {
     axios
       .ajax({
         url: "open_city",
-        isShowLoading:false,
+        isShowLoading: false,
         data: {
           params: {
             page: this.params.page
@@ -34,7 +34,7 @@ export default class City extends Component {
           list: res.result.item_list.map((item, index) => {
             item.key = index;
             return item;
-          }),
+          })
           // pagination: untils.pagination(res, current => {
           //   this.params.page = current;
           //   this.requestList();
@@ -43,10 +43,27 @@ export default class City extends Component {
       });
   };
 
-  // 开通城市
-  // submitCity()=()=>{
+  // 开通城市OK按钮
+  submitCity = () => {
+    const cityInfo =  this.cityForm.props.form.getFieldsValue()
+    // console.log(cityInfo)
+    axios.ajax({
+        url:"city/open",
+        data:{
+          params: cityInfo
+        }
+      }).then((res)=>{
+        if(res.code ===0){
+          this.setState({
+            isShowCity : false
+          })
+          message.success('开通成功')
+          this.requestList()
+        }
+      })
 
-  // }
+  };
+  // 显示开通城市提示框
   handleOpencity = () => {
     this.setState({
       isShowCity: true
@@ -123,16 +140,21 @@ export default class City extends Component {
           />
         </div>
         <Modal
-          title="温馨提示"
+          title="开通城市"
           visible={this.state.isShowCity}
           onCancel={() => {
             this.setState({
               isShowCity: false
             });
           }}
+
           onOk={this.submitCity}
         >
-        <OpencityForm></OpencityForm>
+          <OpencityForm
+            wrappedComponentRef={(inst) => {
+              this.cityForm = inst;
+            }}
+          />
         </Modal>
       </div>
     );
@@ -194,35 +216,51 @@ FilterForm = Form.create({})(FilterForm);
 
 class OpencityForm extends React.Component {
   render() {
-      const OpencityLayout = {
-        labelCol :{
-          span:5
-        },
-        wrapperCol :{
-          span:19
-        }
+    const OpencityLayout = {
+      labelCol: {
+        span: 5
+      },
+      wrapperCol: {
+        span: 19
       }
+    };
+    const { getFieldDecorator } = this.props.form;
     return (
       <Form layout="horizontal">
-        <FormItem label="选择城市" {...OpencityLayout} >
-          <select style={{width:80}}>
-              <option>北京市</option>
-              <option>东京市</option>
-              <option>南京市</option>
-              <option>西京市</option>
-          </select>
+        <FormItem label="选择城市" {...OpencityLayout}>
+          {
+            getFieldDecorator("city_id", {
+            initialValue: "1"
+          })(
+            <Select style={{ width: 90 }}>
+              <Option value="">北京市</Option>
+              <Option value="1">东京市</Option>
+              <Option value="2">南京市</Option>
+              <Option value="3">西京市</Option>
+            </Select>
+          )}
         </FormItem>
-        <FormItem label="营运模式" {...OpencityLayout} >
-          <select style={{width:80}}>
-              <option>自营</option>
-              <option>加盟</option>
-          </select>
+        <FormItem label="营运模式" {...OpencityLayout}>
+
+          {getFieldDecorator("op_model", {
+            initialValue: "1"
+          })(
+            <Select style={{ width: 100 }}>
+              <Option value="1">自营</Option>
+              <Option value="2">加盟</Option>
+            </Select>
+          )}
         </FormItem>
-        <FormItem label="销售模式" {...OpencityLayout} >
-          <select style={{width:80}}>
-              <option>实体店</option>
-              <option>虚拟店</option>
-          </select>
+        <FormItem label="销售模式" {...OpencityLayout}>
+          {getFieldDecorator("user_model", {
+            initialValue: "1"
+          })(
+            <Select style={{ width: 110 }}>
+              <Option value="1">实体店</Option>
+              <Option value="2">虚拟店</Option>
+            </Select>
+          )
+        }
         </FormItem>
       </Form>
     );
