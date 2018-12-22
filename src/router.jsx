@@ -12,6 +12,7 @@ import Home from "./pages/Home";
 import Detail from "./pages/Detail";
 import Gallery from "./pages/Gallery";
 import City from "./pages/City";
+import Order from "./pages/Order";
 import EmployeeInfo from "./pages/EmployeeInfo";
 import EmployeeMan from "./pages/EmployeeMan";
 
@@ -42,6 +43,7 @@ export default class router extends Component {
                     <Route path="/employeeinfo" component={EmployeeInfo} />
                     <Route path="/employeeman" component={EmployeeMan} />
                     <Route path="/city" component={City} />
+                    <Route path="/order" component={Order} />
                     
                     {/* 二级页面 */}
                     <Route path="/ui/buttons" component={Buttons} />
