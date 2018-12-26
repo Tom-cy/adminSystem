@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 喜欢的话来点Star
 
 
@@ -39,43 +38,11 @@
 ├── index.css               // 页面的主体样式     
 ├── index.js                // 系统的东西       
 ├── router.jsx              // 路由配置       
-=======
-项目结构
-├── src                     // React  
-│ ├── App                   //  
-│ ├── axios                 // 封装请求数据
-│ ├── components            // 页面主体
-│ │ ├── Footer              // 页面尾部
-│ │ ├── Header              // 页面头部
-│ │ ├── NavLeft             // 页面左部
-│ ├── config                // mork 数据
-│ ├── pages                 // React 主体
-│ ├── ├── Home  
-│ │ └──                     //  
-│ ├── resource              // pic 图片
-│ │ ├──                     //  
-│ │ └──                     //  
-│ ├── style                 // 公共样式
-│ ├── te                    // 心心特性
-│ └── untils                // 公共组件方法
-├── admin                   // 页面入口
-├── index.css               // 主体样式
-├── index.js                // gogogo
-├── node_modules            // 项目依赖包
-├── package.json            // 项目配置信息
->>>>>>> City
 ## 技术栈
 1:react
 2:react-router-dom
 5:ant-design
 6:axios
-<<<<<<< HEAD
-7:jsonp
-8: redux react-redux redux-devtools-extension --sava
-9: echarts
-10:百度天气API
-=======
 7:less
 8: redux react-redux redux-devtools-extension
 9: echarts
->>>>>>> City

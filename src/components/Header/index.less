@@ -1,10 +1,24 @@
+@import "../../style/default.less";
+img{
+  padding: 0;margin: 0;
+}
 .header {
   background-color: #fff;
+  .logo{
+    height:60px;
+    line-height: 60px;
+    background: #1890ff;
+      img{
+        height:60px;
+        vertical-align: middle;
+      }
+  }
   .header-top {
     height: 60px;
     line-height: 60px;
     padding: 0 40px;
     text-align: right;
+    
     a {
       margin-left: 40px;
       color: #f9c700;
@@ -43,4 +57,17 @@
       }
     }
   }
+}
+
+// 页面头部样式
+.simple-page {
+  .header-top{
+    background:#1890ff;
+    color:@colorM
+  }
+  // .ant-form,
+  // .ant-col-12,
+  // .weather{
+  //   display: none
+  // }
 }

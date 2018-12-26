@@ -82,9 +82,9 @@ export default class tab extends Component {
         title: "姓名",
         dataIndex: "name",
         render: text => (
-          <a href="javascript:void(0)">
+          // <a href="javascript:void(0);">
             {text}
-          </a>
+          // </a>
         )
       },
       {

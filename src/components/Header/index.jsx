@@ -48,21 +48,35 @@ class Header extends Component {
       });
   }
 
+
+  
   render() {
     const { menuName } = this.props;
+    // 这个是判断天气的
+    const menuType = this.props.menuType
+    // console.log(menuType)
     return (
       <div className="header">
         <Row>
-          <Col span={24} className="header-top">
-            <img src="" alt="" />
+          {
+            menuType?
+              <Col span={6} className='logo'>
+                <img src='/assets/imgs/logo.png'></img>
+                <span>详情页</span>
+              </Col>:''
+          }
+          <Col span={menuType?18:24} className="header-top">
+            {/* <img src="" alt="" /> */}
             <span className="welcomeu">欢迎 大哥</span>
             <a className="exit">退出</a>
           </Col>
         </Row>
-        <Row className="breadcrumb">
+        {
+          menuType? "" :
+          <Row className="breadcrumb">
           <Col span={4} className="breadcrumb-title">
             {/* { this.props.menuName } */}
-            {menuName || "首页"}
+            {menuName}
           </Col>
           <Col span={20} className="weather">
             <span className="data">{this.state.time}</span>
@@ -72,6 +86,10 @@ class Header extends Component {
             </span>
           </Col>
         </Row>
+        }
+            
+     
+        
       </div>
     );
   }

@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
-import { Card, Button, Table, Form, Select, Modal ,Option} from "antd";
-=======
-import { Card, Button, Table, Form, Select, Modal , message } from "antd";
->>>>>>> City
+import { Card, Button, Table, Form, Select, Modal  ,message} from "antd";
 import axios from "./../../axios";
 // import untils from "./../../untils/untils";
 
@@ -40,8 +36,8 @@ export default class City extends Component {
             return item;
           })
           // pagination: untils.pagination(res, current => {
-          //   this.params.page = current;
-          //   this.requestList();
+          //   _this.params.page = current;
+          //   _this.requestList();
           // })
         });
       });
@@ -231,15 +227,6 @@ class OpencityForm extends React.Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <Form layout="horizontal">
-<<<<<<< HEAD
-        <FormItem label="选择城市" >
-          <Select>
-            <Option>北京市</Option>
-            <Option>东京市</Option>
-            <Option>南京市</Option>
-            <Option>西京市</Option>
-          </Select>
-=======
         <FormItem label="选择城市" {...OpencityLayout}>
           {
             getFieldDecorator("city_id", {
@@ -274,7 +261,6 @@ class OpencityForm extends React.Component {
             </Select>
           )
         }
->>>>>>> City
         </FormItem>
       </Form>
     );

@@ -5,6 +5,7 @@ import { HashRouter, Switch, Route } from "react-router-dom";
 // 配置页面
 import App from "./App/App";
 import Admin from "./admin.jsx";
+import Common from "./common";
 
 // 一级页面
 import Login from "./pages/Login";
@@ -22,42 +23,43 @@ import Modals from "./pages/ui/modals";
 import Bar from "./pages/echarts/Bar/index";
 import Pie from "./pages/echarts/Pie/index";
 import Line from "./pages/echarts/Line/index";
-
-
- 
+import DetailCommon from "./pages/DetailCommon/detail";
 
 export default class router extends Component {
   render() {
     return (
       <HashRouter>
         <App>
-          <Switch>
-            <Route path="/login" component={Login} />
-            <Route
-              path="/"
-              render={() => (
-                <Switch>
-                  <Admin>
-                    {/* 一级页面 */}
-                    <Route exact path="/home" component={Home} />
-                    <Route path="/employeeinfo" component={EmployeeInfo} />
-                    <Route path="/employeeman" component={EmployeeMan} />
-                    <Route path="/city" component={City} />
-                    <Route path="/order" component={Order} />
-                    
-                    {/* 二级页面 */}
-                    <Route path="/ui/buttons" component={Buttons} />
-                    <Route path="/ui/modals" component={Modals} />
-                    <Route path="/ui/gallery" component={Gallery} />
-                    <Route path="/charts/bar" component={Bar} />
-                    <Route path="/charts/pie" component={Pie} />
-                    <Route path="/charts/line" component={Line} />
-                  </Admin>
-                </Switch>
-              )}
-            />
-            <Route path="/order/detail" component={Detail} />
-          </Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/common" render={() =>
+            <Common>
+              <Route path="/common/order/detail/:orderID" component={DetailCommon} />
+            </Common>
+          }
+          />
+          <Route
+            path="/admin"
+            render={() => (
+              <Switch>
+                <Admin>
+                  {/* 一级页面 */}
+                  <Route path="/admin/home" component={Home} />
+                  <Route path="/admin/employeeinfo" component={EmployeeInfo} />
+                  <Route path="/admin/employeeman" component={EmployeeMan} />
+                  <Route path="/admin/city" component={City} />
+                  <Route path="/admin/order" component={Order} />
+
+                  {/* 二级页面 */}
+                  <Route path="/admin/ui/buttons" component={Buttons} />
+                  <Route path="/admin/ui/modals" component={Modals} />
+                  <Route path="/admin/ui/gallery" component={Gallery} />
+                  <Route path="/admin/charts/bar" component={Bar} />
+                  <Route path="/admin/charts/pie" component={Pie} />
+                  <Route path="/admin/charts/line" component={Line} />
+                </Admin>
+              </Switch>
+            )}
+          />
         </App>
       </HashRouter>
     );
