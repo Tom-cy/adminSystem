@@ -16,9 +16,10 @@ import "./index.less";
 const FormItem = Form.Item;
 const Option = Select.Option;
 export default class Order extends Component {
-  state = {
-    // isShowCity: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
   // 定义page
   params = {
@@ -27,16 +28,16 @@ export default class Order extends Component {
   onRowClick = (record, index) => {
     let selectKey = [index];
     this.setState({
-        selectedRowKeys: selectKey,
-        selectedItem: record
-    })
-}
+      selectedRowKeys: selectKey,
+      selectedItem: record
+    });
+  };
   componentDidMount() {
     // 调用方法，加载接口
     this.OrderList();
   }
   // 默认请求接口数据
-  OrderList = () => {
+  OrderList() {
     let _this = this;
     axios
       .ajax({
@@ -63,7 +64,7 @@ export default class Order extends Component {
           });
         }
       });
-  };
+  }
 
   // 开通城市OK按钮
   submitCity = () => {
@@ -144,10 +145,10 @@ export default class Order extends Component {
       }
     ];
     const selectedRowKeys = this.state.selectedRowKeys;
-        const rowSelection = {
-            type: 'radio',
-            selectedRowKeys
-        }
+    const rowSelection = {
+      type: "radio",
+      selectedRowKeys
+    };
     return (
       <div>
         <Card>
@@ -171,11 +172,11 @@ export default class Order extends Component {
             pagination={this.state.pagination}
             onRow={(record, index) => {
               return {
-                  onClick: () => {
-                      this.onRowClick(record, index);
-                  }
+                onClick: () => {
+                  this.onRowClick(record, index);
+                }
               };
-          }}
+            }}
           />
         </div>
         {/* <Modal

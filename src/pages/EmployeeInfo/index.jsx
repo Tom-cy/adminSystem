@@ -81,11 +81,11 @@ export default class tab extends Component {
       {
         title: "姓名",
         dataIndex: "name",
-        render: text => (
+        // render: text => (
           // <a href="javascript:void(0);">
-            {text}
+            // {text}
           // </a>
-        )
+        // )
       },
       {
         key: "key",
@@ -108,10 +108,10 @@ export default class tab extends Component {
         dataIndex: "bbq",
         render(fish) {
           let yu = {
-            "1": "咸鱼一条",
-            "2": "死鱼一条",
-            "3": "活鱼一条",
-            "4": "臭鱼一条"
+            "1": "看书",
+            "2": "打球",
+            "3": "旅游",
+            "4": "宅"
           };
           return yu[fish];
         }
